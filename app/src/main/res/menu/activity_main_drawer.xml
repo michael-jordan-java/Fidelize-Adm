@@ -9,13 +9,13 @@
             android:icon="@drawable/ic_menu_add"
             android:title="Cadastrar fidelidade" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_aniversariantes"
+            android:icon="@drawable/aniversariantes"
+            android:title="Aniversariantes" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_clientes"
+            android:icon="@drawable/ic_menu_clientes"
+            android:title="Clientes" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
@@ -29,9 +29,9 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_enviar_aviso"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Novo aviso" />
         </menu>
     </item>
 

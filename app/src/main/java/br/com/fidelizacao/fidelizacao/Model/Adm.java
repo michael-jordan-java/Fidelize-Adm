@@ -3,7 +3,7 @@ package br.com.fidelizacao.fidelizacao.Model;
 import java.util.Date;
 
 public class Adm {
-    private Long id;
+    private Long admId;
 
     private String nomeUsuario;
 
@@ -15,20 +15,20 @@ public class Adm {
 
     private Date dataExpiracao;
 
-    private boolean primeiro_login = true;
+    private boolean primeiroLogin;
 
-    private boolean isMaster = true;
+    private boolean isMaster;
 
-    private boolean status = true;
+    private boolean status;
 
-    private Date dataCadastro = new Date();
+    private Date dataCadastro;
 
     public Long getId() {
-        return id;
+        return admId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.admId = id;
     }
 
     public String getNomeUsuario() {
@@ -72,11 +72,11 @@ public class Adm {
     }
 
     public boolean isPrimeiro_login() {
-        return primeiro_login;
+        return primeiroLogin;
     }
 
     public void setPrimeiro_login(boolean primeiro_login) {
-        this.primeiro_login = primeiro_login;
+        this.primeiroLogin = primeiro_login;
     }
 
     public boolean isMaster() {

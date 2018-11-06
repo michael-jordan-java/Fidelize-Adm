@@ -29,6 +29,11 @@ public class SplashScreenActivity extends AppCompatActivity {
         startAnimations();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
     private void startAnimations() {
         Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.fade_in);
         animation.reset();
@@ -49,6 +54,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             }
         }, 2000);
     }
+
 
     @Override
     public void onBackPressed() {

@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "32094891765",
+    "firebase_url": "https://pushnotification-a89c5.firebaseio.com",
+    "project_id": "pushnotification-a89c5",
+    "storage_bucket": "pushnotification-a89c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32094891765:android:fb126284cc6f3e9e",
+        "android_client_info": {
+          "package_name": "br.com.fidelizacao.fidelizacao"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32094891765-pqi9eflupn09lq9vjcadvcpvcjitc4dr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCdrqpcH9SOBsT-52bAKW3ypLexU_-CwA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32094891765:android:0f6422c6f1039e5b",
+        "android_client_info": {
+          "package_name": "com.stefanini.basedeconhecimento"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32094891765-pqi9eflupn09lq9vjcadvcpvcjitc4dr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCdrqpcH9SOBsT-52bAKW3ypLexU_-CwA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

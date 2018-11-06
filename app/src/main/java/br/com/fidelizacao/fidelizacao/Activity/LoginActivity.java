@@ -66,6 +66,8 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onSuccess(String valueRead) {
             // Salvando login do usuario nas preferencias
+
+            Log.e("adm", valueRead);
             PrefsUtil.salvarLogin(context, valueRead);
 
             startActivity(new Intent(context, MainActivity.class));

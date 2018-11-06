@@ -3,6 +3,7 @@
     package="br.com.fidelizacao">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -11,20 +12,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fidelizacao.Activity.LoginActivity"></activity>
-        <activity android:name=".fidelizacao.Activity.SplashScreenActivity">
-        </activity>
+        <activity android:name=".fidelizacao.Activity.LoginActivity" />
+        <activity
+            android:name=".fidelizacao.Activity.SplashScreenActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".fidelizacao.Activity.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".fidelizacao.Activity.CadastroFidelizacaoActivity">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".fidelizacao.Activity.CadastroFidelizacaoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".fidelizacao.Activity.AniversariantesActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".fidelizacao.Activity.ClientesActivity"></activity>
     </application>
 
 </manifest>

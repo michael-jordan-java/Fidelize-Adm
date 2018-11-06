@@ -1,23 +1,22 @@
 package br.com.fidelizacao.fidelizacao.Model;
 
 import java.util.Date;
-import java.util.List;
 
-public class ControleFidelidade {
-    private Long id;
+public class ProgramaFidelizacao {
+    private Long programaFidelizacaoId;
     private Date tempoExpiracao;
-    private Adm usuario_cadastro;
+    private Adm usuarioCadastro;
     private boolean status = true;
-    private double qtd_premio;
+    private double qtdPremio;
     private TipoFidelizacao tipoFidelizacao;
     private Date dataCadastro = new Date();
 
     public Long getId() {
-        return id;
+        return programaFidelizacaoId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.programaFidelizacaoId = id;
     }
 
     public Date getTempoExpiracao() {
@@ -29,11 +28,11 @@ public class ControleFidelidade {
     }
 
     public Adm getUsuario_cadastro() {
-        return usuario_cadastro;
+        return usuarioCadastro;
     }
 
     public void setUsuario_cadastro(Adm usuario_cadastro) {
-        this.usuario_cadastro = usuario_cadastro;
+        this.usuarioCadastro = usuario_cadastro;
     }
 
     public boolean isStatus() {
@@ -45,11 +44,11 @@ public class ControleFidelidade {
     }
 
     public double getQtd_premio() {
-        return qtd_premio;
+        return qtdPremio;
     }
 
     public void setQtd_premio(double qtd_premio) {
-        this.qtd_premio = qtd_premio;
+        this.qtdPremio = qtd_premio;
     }
 
     public TipoFidelizacao getTipoFidelizacao() {
