@@ -6,7 +6,7 @@ package br.com.fidelizacao.fidelizacao.RestAdress;
 
 public class RestAddress {
     //Endereco base da API
-    public static final String URL = "http://192.168.43.50:8080/Fidelizacao";
+    public static final String URL = "http://192.168.0.103:8080/Fidelizacao";
 
     //Endereços de recursos da API
     public static final String LOGIN = URL + "/rest/adm/logar";
@@ -15,6 +15,7 @@ public class RestAddress {
     public static final String BUSCAR_ANIVERSARIANTES = URL + "/rest/adm/cliente/aniversariantes";
     public static final String ENVIAR_AVISOS = URL + "/rest/adm/enviarAviso";
     public static final String BUSCAR_CLIENTES = URL + "/rest/cliente/";
+    public static final String ATUALIZA_TOKEN_PUSH_NOTIFICATION = URL + "/rest/adm/token/{idCliente}";
 
 
 }

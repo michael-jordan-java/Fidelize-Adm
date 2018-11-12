@@ -5,6 +5,8 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import br.com.fidelizacao.fidelizacao.Activity.SplashScreenActivity;
+import br.com.fidelizacao.fidelizacao.Task.HandlerTask;
+import br.com.fidelizacao.fidelizacao.Util.PrefsUtil;
 import br.com.fidelizacao.fidelizacao.Util.PushNotificationUtil;
 
 /**
@@ -21,4 +23,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
     }
 
+    @Override
+    public void onNewToken(String s) {
+        super.onNewToken(s);
+        PrefsUtil.atualizaTokenPushNotification(getApplicationContext(), s);
+    }
 }

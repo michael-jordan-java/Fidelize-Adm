@@ -15,6 +15,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
         token anterior ter sido comprometida. Observe que isso é chamado quando o token
         do InstanceId é inicialmente gerado, então é aqui que você recupera o token;
      */
+
     @Override
     public void onTokenRefresh() {
         super.onTokenRefresh();

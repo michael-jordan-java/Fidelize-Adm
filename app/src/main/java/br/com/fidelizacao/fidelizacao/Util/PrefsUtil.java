@@ -67,4 +67,14 @@ public class PrefsUtil {
 
         }
     }
+
+    public static void atualizaTokenPushNotification(Context context, String token) {
+        //Pegando a preferencia default
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        //Editando a preferencia default
+        SharedPreferences.Editor editor = preferences.edit();
+        //Adicionando as informações do login na preferencia
+        editor.putString("tokenUsuarioPushNotification", token);
+        editor.commit();
+    }
 }
