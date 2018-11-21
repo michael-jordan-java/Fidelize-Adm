@@ -77,4 +77,21 @@ public class PrefsUtil {
         editor.putString("tokenUsuarioPushNotification", token);
         editor.commit();
     }
+
+    public static String getTokenPushNotification(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+        if (preferences.getString("tokenUsuarioPushNotification", "").isEmpty()) {
+            return null;
+        } else {
+            String preferencesStringTokenAdm = preferences.getString("tokenUsuarioPushNotification", "");
+
+            if(preferencesStringTokenAdm.isEmpty()) {
+                return null;
+            }else{
+                return preferencesStringTokenAdm;
+            }
+
+        }
+    }
 }

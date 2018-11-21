@@ -3,20 +3,27 @@ package br.com.fidelizacao.fidelizacao.Model;
 import java.util.Date;
 
 public class ProgramaFidelizacao {
-    private Long programaFidelizacaoId;
-    private Date tempoExpiracao;
-    private Adm usuarioCadastro;
-    private boolean status = true;
-    private double qtdPremio;
-    private TipoFidelizacao tipoFidelizacao;
-    private Date dataCadastro = new Date();
 
-    public Long getId() {
+    private Long programaFidelizacaoId;
+
+    private Date tempoExpiracao;
+
+    private Adm usuarioCadastro;
+
+    private boolean status;
+
+    private double qtdPremio;
+
+    private TipoFidelizacao tipoFidelizacao;
+
+    private Date dataCadastro;
+
+    public Long getProgramaFidelizacaoId() {
         return programaFidelizacaoId;
     }
 
-    public void setId(Long id) {
-        this.programaFidelizacaoId = id;
+    public void setProgramaFidelizacaoId(Long programaFidelizacaoId) {
+        this.programaFidelizacaoId = programaFidelizacaoId;
     }
 
     public Date getTempoExpiracao() {
@@ -27,12 +34,12 @@ public class ProgramaFidelizacao {
         this.tempoExpiracao = tempoExpiracao;
     }
 
-    public Adm getUsuario_cadastro() {
+    public Adm getUsuarioCadastro() {
         return usuarioCadastro;
     }
 
-    public void setUsuario_cadastro(Adm usuario_cadastro) {
-        this.usuarioCadastro = usuario_cadastro;
+    public void setUsuarioCadastro(Adm usuarioCadastro) {
+        this.usuarioCadastro = usuarioCadastro;
     }
 
     public boolean isStatus() {
@@ -43,12 +50,12 @@ public class ProgramaFidelizacao {
         this.status = status;
     }
 
-    public double getQtd_premio() {
+    public double getQtdPremio() {
         return qtdPremio;
     }
 
-    public void setQtd_premio(double qtd_premio) {
-        this.qtdPremio = qtd_premio;
+    public void setQtdPremio(double qtdPremio) {
+        this.qtdPremio = qtdPremio;
     }
 
     public TipoFidelizacao getTipoFidelizacao() {

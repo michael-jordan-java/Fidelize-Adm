@@ -4,31 +4,23 @@ import java.util.Date;
 
 public class Adm {
     private Long admId;
-
     private String nomeUsuario;
-
     private String senha;
-
     private String email;
-
     private String celular;
-
     private Date dataExpiracao;
-
+    private String tokenPushNotification;
     private boolean primeiroLogin;
-
     private boolean isMaster;
-
     private boolean status;
-
     private Date dataCadastro;
 
-    public Long getId() {
+    public Long getAdmId() {
         return admId;
     }
 
-    public void setId(Long id) {
-        this.admId = id;
+    public void setAdmId(Long admId) {
+        this.admId = admId;
     }
 
     public String getNomeUsuario() {
@@ -37,14 +29,6 @@ public class Adm {
 
     public void setNomeUsuario(String nomeUsuario) {
         this.nomeUsuario = nomeUsuario;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public String getEmail() {
@@ -71,20 +55,28 @@ public class Adm {
         this.dataExpiracao = dataExpiracao;
     }
 
-    public boolean isPrimeiro_login() {
+    public String getTokenPushNotification() {
+        return tokenPushNotification;
+    }
+
+    public void setTokenPushNotification(String tokenPushNotification) {
+        this.tokenPushNotification = tokenPushNotification;
+    }
+
+    public boolean isPrimeiroLogin() {
         return primeiroLogin;
     }
 
-    public void setPrimeiro_login(boolean primeiro_login) {
-        this.primeiroLogin = primeiro_login;
+    public void setPrimeiroLogin(boolean primeiroLogin) {
+        this.primeiroLogin = primeiroLogin;
     }
 
     public boolean isMaster() {
         return isMaster;
     }
 
-    public void setMaster(boolean isMaster) {
-        this.isMaster = isMaster;
+    public void setMaster(boolean master) {
+        isMaster = master;
     }
 
     public boolean isStatus() {
@@ -103,5 +95,11 @@ public class Adm {
         this.dataCadastro = dataCadastro;
     }
 
+    public String getSenha() {
+        return senha;
+    }
 
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }

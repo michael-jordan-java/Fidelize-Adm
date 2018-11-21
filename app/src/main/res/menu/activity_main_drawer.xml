@@ -17,22 +17,8 @@
             android:icon="@drawable/ic_menu_clientes"
             android:title="Clientes" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_ganhadores"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Ganhadores" />
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_enviar_aviso"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Novo aviso" />
-        </menu>
-    </item>
-
 </menu>

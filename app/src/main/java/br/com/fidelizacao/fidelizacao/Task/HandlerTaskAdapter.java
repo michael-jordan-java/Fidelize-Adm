@@ -10,7 +10,7 @@ public abstract class HandlerTaskAdapter implements HandlerTask {
     }
 
     @Override
-    public void onSuccess(String valueRead) {
+    public void onSuccess(String valueRead){
     }
 
     @Override

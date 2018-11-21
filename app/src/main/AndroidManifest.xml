@@ -26,17 +26,43 @@
             android:name=".fidelizacao.Activity.MainActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".fidelizacao.Activity.CadastroFidelizacaoActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".fidelizacao.Activity.AniversariantesActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".fidelizacao.Activity.ClientesActivity"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".fidelizacao.Activity.ClientesActivity" />
+
+        <service android:name=".fidelizacao.Service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".fidelizacao.Service.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".fidelizacao.Task.BroadcastReceiverTask">
+            <intent-filter>
+                <action android:name="VERIFICAR_PROGRAMA_FIDELIDADE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".fidelizacao.Task.BroadcastReceiverGanhadoresTask">
+            <intent-filter>
+                <action android:name="VERIFICAR_GANHADORES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".fidelizacao.Activity.GanhadoresActivity"></activity>
     </application>
 
 </manifest>

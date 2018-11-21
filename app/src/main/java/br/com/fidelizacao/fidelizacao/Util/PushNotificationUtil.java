@@ -31,7 +31,7 @@ public class PushNotificationUtil {
         notifyBuilder.setContentIntent(pendingIntent);
 
         //Definido o icon que acompanhará na notificação
-        notifyBuilder.setSmallIcon(R.mipmap.ic_launcher);
+        notifyBuilder.setSmallIcon(R.drawable.logo);
 
         //Definindo o titulo
         notifyBuilder.setContentTitle(titulo);
@@ -43,7 +43,7 @@ public class PushNotificationUtil {
         v.vibrate(1000);
 
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(R.mipmap.ic_launcher, notifyBuilder.build());
+        manager.notify(R.drawable.logo, notifyBuilder.build());
 
         try{
             Uri som = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);

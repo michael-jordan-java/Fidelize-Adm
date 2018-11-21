@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="404dp"
+        android:layout_marginTop="416dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@android:color/white"
@@ -82,9 +82,9 @@
         <android.support.design.widget.TextInputEditText
             android:id="@+id/etQtdPremio"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:focusable="auto"
-            android:inputType="text" />
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="10" />
 
     </android.support.design.widget.TextInputLayout>
 

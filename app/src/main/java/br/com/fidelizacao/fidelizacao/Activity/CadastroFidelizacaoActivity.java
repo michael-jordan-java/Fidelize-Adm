@@ -46,6 +46,7 @@ public class CadastroFidelizacaoActivity extends AppCompatActivity {
     private Spinner spinner;
     private Toolbar toolbar;
     private ProgressDialog progressDialog;
+    private boolean flagIsInsert = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +110,7 @@ public class CadastroFidelizacaoActivity extends AppCompatActivity {
     private void updateLabel() {
 
         String myFormat = "dd/MM/yyyy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, new Locale("pt","BR"));
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, new Locale("pt", "BR"));
 
         etDataExpiracao.setText(sdf.format(calendar.getTime()));
     }
@@ -139,13 +140,15 @@ public class CadastroFidelizacaoActivity extends AppCompatActivity {
         } else {
             // Verificando se a data de expiração é menor que a data atual
             Date tempoExpiracao = new Date(dataExpiracao);
-            if(!tempoExpiracao.after(new Date())) {
+            if (!tempoExpiracao.after(new Date())) {
                 Toast.makeText(context, "O tempo de expiração não pode ser menor que a data atual", Toast.LENGTH_SHORT).show();
-            }else {
+            } else {
                 controleFidelidade.setTempoExpiracao(tempoExpiracao);
                 controleFidelidade.setTipoFidelizacao(TipoFidelizacao.valueOf(spinnerItem));
-                controleFidelidade.setQtd_premio(Integer.parseInt(qtdPremio));
-                controleFidelidade.setUsuario_cadastro(PrefsUtil.getLogin(context));
+                controleFidelidade.setQtdPremio(Integer.parseInt(qtdPremio));
+                controleFidelidade.setUsuarioCadastro(PrefsUtil.getLogin(context));
+                controleFidelidade.setStatus(true);
+                controleFidelidade.setDataCadastro(new Date());
 
                 new TaskRest(TaskRest.RequestMethod.POST, handlerSalvarFidelidade).execute(RestAddress.CADASTRAR_FIDELIDADE, new JsonParser<>(ProgramaFidelizacao.class).fromObject(controleFidelidade));
             }
@@ -171,7 +174,11 @@ public class CadastroFidelizacaoActivity extends AppCompatActivity {
         @Override
         public void onError(Exception erro) {
             super.onError(erro);
-            Toast.makeText(context, erro.getMessage(), Toast.LENGTH_SHORT).show();
+            if (erro.getMessage().equals("Erro: 400")) {
+                Toast.makeText(context, "Já possuí um programa de fidelização ativo cadastrado", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(context, erro.getMessage(), Toast.LENGTH_SHORT).show();
+            }
             progressDialog.dismiss();
         }
     };
@@ -185,7 +192,7 @@ public class CadastroFidelizacaoActivity extends AppCompatActivity {
 
         //Adicionando a categoria
         tipoFidelizacao.add("Selecione");
-       //tipoFidelizacao.add(TipoFidelizacao.DINHEIRO.toString());
+        //tipoFidelizacao.add(TipoFidelizacao.DINHEIRO.toString());
         tipoFidelizacao.add(TipoFidelizacao.UNIDADE.toString());
 
         //Populando o spinner

@@ -1,15 +1,25 @@
 package br.com.fidelizacao.fidelizacao.Activity;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.net.URI;
 
 import br.com.fidelizacao.R;
 import br.com.fidelizacao.fidelizacao.Model.Adm;
@@ -55,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
             new TaskRest(TaskRest.RequestMethod.POST, handlerLogin).execute(RestAddress.LOGIN, parser.fromObject(adm));
         }
     }
+
 
     private HandlerTask handlerLogin = new HandlerTaskAdapter() {
         @Override

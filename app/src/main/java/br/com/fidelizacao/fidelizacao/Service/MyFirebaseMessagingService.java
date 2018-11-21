@@ -1,11 +1,13 @@
 package br.com.fidelizacao.fidelizacao.Service;
 
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import br.com.fidelizacao.fidelizacao.Activity.SplashScreenActivity;
 import br.com.fidelizacao.fidelizacao.Task.HandlerTask;
+import br.com.fidelizacao.fidelizacao.Util.GerarNotificacaoUtil;
 import br.com.fidelizacao.fidelizacao.Util.PrefsUtil;
 import br.com.fidelizacao.fidelizacao.Util.PushNotificationUtil;
 
@@ -19,7 +21,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         super.onMessageReceived(remoteMessage);
         //Verificando se contem mensagem
         if (remoteMessage.getNotification() != null) {
-            PushNotificationUtil.sendNotification(this, SplashScreenActivity.class, remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
+            GerarNotificacaoUtil.gerarNotificacao(this, new Intent(this, SplashScreenActivity.class), "Novo aviso" ,remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody().toString());
         }
     }
 
