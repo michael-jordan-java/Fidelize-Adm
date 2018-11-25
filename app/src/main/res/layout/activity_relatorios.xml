@@ -2,35 +2,38 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/recyclerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fundo_aniversariante"
-    tools:context=".fidelizacao.Activity.AniversariantesActivity">
+    android:background="@drawable/background"
+    tools:context=".Activity.RelatoriosActivity">
 
     <include
+        android:id="@+id/include3"
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewAniversariantes"
+    <TextView
+        android:id="@+id/tvQtdVendasEstabelecimento"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="64dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@android:color/white"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="5dp"
+        android:text="Vendas no estabelecimento"
+        android:textSize="22sp"
+        android:onClick="qtdVendasEstabelecimentoClick"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/include3" />
+
 </android.support.constraint.ConstraintLayout>

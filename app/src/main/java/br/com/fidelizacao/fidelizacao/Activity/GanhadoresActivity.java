@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import br.com.fidelizacao.R;
+import br.com.fidelizacao.fidelizacao.Adapter.AniversariantesAdapter;
 import br.com.fidelizacao.fidelizacao.Adapter.ClientesAdapter;
 import br.com.fidelizacao.fidelizacao.Model.Cliente;
 import br.com.fidelizacao.fidelizacao.RestAdress.RestAddress;
@@ -69,7 +70,7 @@ public class GanhadoresActivity extends AppCompatActivity {
                 recyclerViewGanhadores.setVisibility(View.INVISIBLE);
             }
 
-            recyclerViewGanhadores.setAdapter(new ClientesAdapter(clientes, clientesListener, context));
+            recyclerViewGanhadores.setAdapter(new AniversariantesAdapter(clientes, ganhadoresListener, context));
         }
 
         @Override
@@ -79,9 +80,9 @@ public class GanhadoresActivity extends AppCompatActivity {
         }
     };
 
-    private ClientesAdapter.OnClientesListener clientesListener = new ClientesAdapter.OnClientesListener() {
+    private AniversariantesAdapter.OnAniversariantesListener ganhadoresListener = new AniversariantesAdapter.OnAniversariantesListener() {
         @Override
-        public void onClickCliente(View view, Cliente cliente) {
+        public void onClickProcedimento(View view, Cliente cliente) {
             Toast.makeText(context, cliente.getNome() + " selecionado", Toast.LENGTH_SHORT).show();
         }
     };

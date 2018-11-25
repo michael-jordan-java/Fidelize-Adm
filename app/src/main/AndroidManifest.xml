@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fidelizacao.Activity.LoginActivity" />
+        <activity android:name=".fidelizacao.Activity.LoginActivity">
+
+        </activity>
         <activity
             android:name=".fidelizacao.Activity.SplashScreenActivity"
             android:screenOrientation="portrait">
@@ -26,15 +28,24 @@
             android:name=".fidelizacao.Activity.MainActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+
         <activity
             android:name=".fidelizacao.Activity.CadastroFidelizacaoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".fidelizacao.Activity.AniversariantesActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".fidelizacao.Activity.ClientesActivity" />
+            android:screenOrientation="portrait">
+
+
+        </activity>
+        <activity android:name=".fidelizacao.Activity.ClientesActivity">
+
+
+        </activity>
 
         <service android:name=".fidelizacao.Service.MyFirebaseMessagingService">
             <intent-filter>
@@ -54,15 +65,21 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
-
         <receiver android:name=".fidelizacao.Task.BroadcastReceiverGanhadoresTask">
             <intent-filter>
                 <action android:name="VERIFICAR_GANHADORES" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".fidelizacao.Activity.GanhadoresActivity"></activity>
+        <activity android:name=".fidelizacao.Activity.GanhadoresActivity">
+
+        </activity>
+        <activity android:name=".fidelizacao.Activity.RelatoriosActivity" />
+        <activity android:name=".fidelizacao.Activity.RelatorioQtdVendasActivity">
+
+        </activity>
     </application>
 
 </manifest>

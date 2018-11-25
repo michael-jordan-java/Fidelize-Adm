@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/fundo_ganhadores"
     tools:context=".Activity.GanhadoresActivity">
 
     <include
@@ -16,13 +16,16 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerGanhadores"
         android:layout_width="344dp"
-        android:layout_height="495dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_height="277dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2"
+        app:layout_constraintVertical_bias="0.323" />
 
     <TextView
         android:id="@+id/tvTemGanhadores"
@@ -38,7 +41,9 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerGanhadores"
         app:layout_constraintEnd_toEndOf="@+id/recyclerGanhadores"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/recyclerGanhadores"
-        app:layout_constraintTop_toBottomOf="@+id/include2" />
+        app:layout_constraintTop_toBottomOf="@+id/include2"
+        app:layout_constraintVertical_bias="0.514" />
 
 </android.support.constraint.ConstraintLayout>

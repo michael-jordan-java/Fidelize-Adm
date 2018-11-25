@@ -117,13 +117,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.fade_in);
         animation.reset();
 
-        ImageView iv_background = (ImageView) findViewById(R.id.iv_background);
-
-        if (iv_background != null) {
-            iv_background.clearAnimation();
-            iv_background.startAnimation(animation);
-        }
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

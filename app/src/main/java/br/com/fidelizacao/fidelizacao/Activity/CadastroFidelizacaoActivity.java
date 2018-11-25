@@ -3,31 +3,19 @@ package br.com.fidelizacao.fidelizacao.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.ActionMode;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
-import android.widget.Spinner;
+import android.widget.EditText;
 import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
-
 import br.com.fidelizacao.R;
-import br.com.fidelizacao.fidelizacao.Model.Adm;
 import br.com.fidelizacao.fidelizacao.Model.ProgramaFidelizacao;
 import br.com.fidelizacao.fidelizacao.Model.TipoFidelizacao;
 import br.com.fidelizacao.fidelizacao.RestAdress.RestAddress;
@@ -39,14 +27,10 @@ import br.com.fidelizacao.fidelizacao.Util.PrefsUtil;
 
 public class CadastroFidelizacaoActivity extends AppCompatActivity {
     private Context context;
-    private TextInputEditText etDataExpiracao, etQtdPremio;
+    private EditText etDataExpiracao, etQtdPremio;
     private Calendar calendar;
-    private DatePickerDialog datePickerDialog;
-    private int ano, mes, dia;
-    private Spinner spinner;
     private Toolbar toolbar;
     private ProgressDialog progressDialog;
-    private boolean flagIsInsert = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,21 +48,12 @@ public class CadastroFidelizacaoActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        spinner = findViewById(R.id.spinnerTipoFidelizacao);
-        spinner.getBackground().setColorFilter(Color.parseColor("#ffffff"), PorterDuff.Mode.SRC_ATOP);
-
-        etDataExpiracao.setFocusable(false);
-        etQtdPremio.setFocusable(false);
-        spinner.setFocusable(true);
-
     }
 
 
     @Override
     protected void onStart() {
         super.onStart();
-
-        showSpinner();
 
         calendar = Calendar.getInstance();
 
@@ -129,13 +104,12 @@ public class CadastroFidelizacaoActivity extends AppCompatActivity {
     }
 
     public void salvarOnClick(View view) {
-        String spinnerItem = spinner.getSelectedItem().toString().trim();
         String dataExpiracao = etDataExpiracao.getText().toString().trim();
         String qtdPremio = etQtdPremio.getText().toString().trim();
         ProgramaFidelizacao controleFidelidade = new ProgramaFidelizacao();
 
 
-        if (spinnerItem.isEmpty() || dataExpiracao.isEmpty() || qtdPremio.isEmpty()) {
+        if (dataExpiracao.isEmpty() || qtdPremio.isEmpty()) {
             Toast.makeText(context, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
         } else {
             // Verificando se a data de expiração é menor que a data atual
@@ -144,7 +118,7 @@ public class CadastroFidelizacaoActivity extends AppCompatActivity {
                 Toast.makeText(context, "O tempo de expiração não pode ser menor que a data atual", Toast.LENGTH_SHORT).show();
             } else {
                 controleFidelidade.setTempoExpiracao(tempoExpiracao);
-                controleFidelidade.setTipoFidelizacao(TipoFidelizacao.valueOf(spinnerItem));
+                controleFidelidade.setTipoFidelizacao(TipoFidelizacao.UNIDADE);
                 controleFidelidade.setQtdPremio(Integer.parseInt(qtdPremio));
                 controleFidelidade.setUsuarioCadastro(PrefsUtil.getLogin(context));
                 controleFidelidade.setStatus(true);
@@ -176,27 +150,11 @@ public class CadastroFidelizacaoActivity extends AppCompatActivity {
             super.onError(erro);
             if (erro.getMessage().equals("Erro: 400")) {
                 Toast.makeText(context, "Já possuí um programa de fidelização ativo cadastrado", Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
                 Toast.makeText(context, erro.getMessage(), Toast.LENGTH_SHORT).show();
             }
             progressDialog.dismiss();
         }
     };
 
-    /*
-       EXIBIR SPINNER
-    */
-    private void showSpinner() {
-        //Atualizando a lista
-        List<String> tipoFidelizacao = new ArrayList<>();
-
-        //Adicionando a categoria
-        tipoFidelizacao.add("Selecione");
-        //tipoFidelizacao.add(TipoFidelizacao.DINHEIRO.toString());
-        tipoFidelizacao.add(TipoFidelizacao.UNIDADE.toString());
-
-        //Populando o spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, tipoFidelizacao);
-        spinner.setAdapter(adapter);
-    }
 }

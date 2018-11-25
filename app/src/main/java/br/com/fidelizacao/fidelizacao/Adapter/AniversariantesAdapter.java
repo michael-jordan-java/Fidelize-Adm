@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,13 +51,12 @@ public class AniversariantesAdapter extends RecyclerView.Adapter<Aniversariantes
         View view = inflater.inflate(R.layout.adapter_aniversariantes, parent, false);
 
 
-       return new AniversariantesViewHolder(view);
+        return new AniversariantesViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AniversariantesViewHolder holder, int position) {
         final Cliente cliente = clientes.get(position);
-        new TaskRest(TaskRest.RequestMethod.GET, handlerQtdCompra).execute(RestAddress.BUSCAR_QTD_FIDELIZACAO + cliente.getClienteId());
         holder.tvNome.setText(cliente.getNome());
 
         // Adicionando formato dd/MM/yyyy
@@ -64,7 +65,7 @@ public class AniversariantesAdapter extends RecyclerView.Adapter<Aniversariantes
         holder.tvDataNascimento.setText(formato.format(cliente.getDataNascimento()));
         //holder.tvQtdCompra.setText(qtdCompra);
 
-        if(aniversariantesListener != null){
+        if (aniversariantesListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -76,7 +77,11 @@ public class AniversariantesAdapter extends RecyclerView.Adapter<Aniversariantes
         holder.ivSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exibirMensagemEdt(cliente, context);
+                String toNumber = cliente.getCelular(); // Replace with mobile phone number without +Sign or leading zeros.
+
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://api.whatsapp.com/send?phone=" + toNumber));
+                context.startActivity(intent);
             }
         });
     }
@@ -86,70 +91,21 @@ public class AniversariantesAdapter extends RecyclerView.Adapter<Aniversariantes
         return clientes.size();
     }
 
-    public class AniversariantesViewHolder extends RecyclerView.ViewHolder{
-        TextView tvNome, tvDataNascimento, tvQtdCompra;
-        ConstraintLayout constraintLayout;
+    public class AniversariantesViewHolder extends RecyclerView.ViewHolder {
+        TextView tvNome, tvDataNascimento;
+        LinearLayout constraintLayout;
         ImageView ivSendMessage;
 
-        public AniversariantesViewHolder(View view){
+        public AniversariantesViewHolder(View view) {
             super(view);
             tvNome = view.findViewById(R.id.tvNome);
             tvDataNascimento = view.findViewById(R.id.tv_dt_aniversario);
-            tvQtdCompra = view.findViewById(R.id.tv_qtd_compra);
             constraintLayout = view.findViewById(R.id.recyclerLayout);
             ivSendMessage = view.findViewById(R.id.ivSendMessage);
         }
     }
 
-    public interface OnAniversariantesListener{
+    public interface OnAniversariantesListener {
         public void onClickProcedimento(View view, Cliente cliente);
-    }
-
-    public HandlerTask handlerQtdCompra = new HandlerTask() {
-        @Override
-        public void onPreHandle() {
-
-        }
-
-        @Override
-        public void onSuccess(String valueRead) {
-            qtdCompra = valueRead;
-        }
-
-        @Override
-        public void onError(Exception erro) {
-
-        }
-    };
-
-    public void exibirMensagemEdt(final Cliente cliente, final Context context){
-
-        AlertDialog.Builder mensagem = new AlertDialog.Builder(context);
-        mensagem.setTitle(cliente.getNome());
-
-        // DECLARACAO DO EDITTEXT
-        final EditText input = new EditText(context);
-
-        mensagem.setView(input);
-        mensagem.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-
-            public void onClick(DialogInterface dialog, int which) {
-                try {
-                    String text = input.getText().toString().trim();// Replace with your message.
-
-                    String toNumber = cliente.getCelular(); // Replace with mobile phone number without +Sign or leading zeros.
-
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+toNumber +"&text="+text));
-                    context.startActivity(intent);
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-
-        });
-
-        mensagem.show();
     }
 }

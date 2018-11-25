@@ -13,6 +13,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import br.com.fidelizacao.R;
+import br.com.fidelizacao.fidelizacao.Adapter.AniversariantesAdapter;
 import br.com.fidelizacao.fidelizacao.Adapter.ClientesAdapter;
 import br.com.fidelizacao.fidelizacao.Model.Cliente;
 import br.com.fidelizacao.fidelizacao.RestAdress.RestAddress;
@@ -35,7 +36,7 @@ public class ClientesActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
 
-        if(toolbar != null){
+        if (toolbar != null) {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
@@ -64,7 +65,7 @@ public class ClientesActivity extends AppCompatActivity {
         public void onSuccess(String valueRead) {
             //Transformando a String em lista de Clientes
             clientes = new JsonParser<>(Cliente.class).toList(valueRead, Cliente[].class);
-            recyclerViewCliente.setAdapter(new ClientesAdapter(clientes, clientesListener, context));
+            recyclerViewCliente.setAdapter(new AniversariantesAdapter(clientes, clientesListener, context));
         }
 
         @Override
@@ -74,16 +75,23 @@ public class ClientesActivity extends AppCompatActivity {
         }
     };
 
-    private ClientesAdapter.OnClientesListener clientesListener = new ClientesAdapter.OnClientesListener() {
+    /*  private ClientesAdapter.OnClientesListener clientesListener = new ClientesAdapter.OnClientesListener() {
+          @Override
+          public void onClickCliente(View view, Cliente cliente) {
+
+          }
+      };
+      */
+    private AniversariantesAdapter.OnAniversariantesListener clientesListener = new AniversariantesAdapter.OnAniversariantesListener() {
         @Override
-        public void onClickCliente(View view, Cliente cliente) {
+        public void onClickProcedimento(View view, Cliente cliente) {
             Toast.makeText(context, cliente.getNome() + " selecionado", Toast.LENGTH_SHORT).show();
         }
     };
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
